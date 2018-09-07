@@ -8,47 +8,13 @@
     <link rel="stylesheet" href="style.css">
 
     <script>window.$ = window.jQuery = require('jquery');</script>
-    <script>
-        function allowDrop(evt) {
-            evt.preventDefault();
-            console.log("item being dragged to valid location...");
-        }
-
-        function drag(evt) {
-            evt.dataTransfer.setData("key", evt.target.id);
-            console.log("it's dragging...");
-        }
-
-        function drop(evt) {
-
-            var data = evt.dataTransfer.getData("key");
-            evt.preventDefault();
-            evt.target.appendChild(document.getElementById(data));
-            console.log("Item dropped");
-
-
-
-            var header = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><Commands>";
-            var openCmd = "<command type=\"open\"><name>Toyota 47.jpg.tif</name><id>image1</id></command>";
-            var footer = "</Commands>";
-            var xhttp = new XMLHttpRequest();
-
-            xhttp.addEventListener("readystatechange", function () {
-                if (this.readyState === 4) {
-                    console.log(this.responseText);
-                }
-            });
-
-            xhttp.open("POST", "http://10.1.0.138:8000/xmlcommand", true);
-            xhttp.send(header + openCmd + footer);
-            console.log("Hiperservice success");
-        }
-
-    </script>
+    
 </head>
 
 <body>
     <h1>HiperElectron</h1>
+
+    <button onclick="clearWall()"> Clear Wall </button>
 
     <ul>
         <li><img src='file://C:/Users/jgabriel/Documents/Code Projects/hiperelectron/assets/images/Toyota 47.jpg' id="dragElement"
@@ -67,15 +33,11 @@
 
     <div ondrop="drop(event)" ondragover="allowDrop(event)"></div>
 
-    <br>
-    <br>
-    <br>
-    <br>
     <!-- Test purposes to check if jquery is running -->
-    <p>
+    <!-- <p>
         <button id="hide">Hide</button>
         <button id="show">Show</button>
-    </p>
+    </p> -->
 
 
 
